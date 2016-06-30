@@ -1,4 +1,4 @@
-{% set version = "0.7.2" %}
+{% set version = "0.7.3" %}
 
 package:
   name: mistune
@@ -7,7 +7,7 @@ package:
 source:
   fn: mistune-{{ version }}.tar.gz
   url: https://github.com/lepture/mistune/archive/v{{ version }}.tar.gz
-  md5: 798a72534237c25e6349d24652d0a6bc
+  sha256: c4f391e61d3b5e8fbb112669a5c6960fb04b71b61d35f0f09a201809545b1676
 
 build:
   number: 0
@@ -22,8 +22,14 @@ requirements:
     - python
 
 test:
+  requires:
+    - python
+    - nose
   imports:
     - mistune
+  commands:
+    - cd "{{ SRC_DIR }}"
+    - python setup.py -q nosetests
 
 about:
   home: https://github.com/lepture/mistune
@@ -33,3 +39,4 @@ about:
 extra:
   recipe-maintainers:
     - pelson
+    - bollwyvl
