@@ -1,40 +1,45 @@
+{% set name = "mistune" %}
 {% set version = "0.7.3" %}
 
 package:
-  name: mistune
-  version: {{ version }}
+  name: "{{ name }}"
+  version: "{{ version }}"
 
 source:
-  fn: mistune-{{ version }}.tar.gz
-  url: https://github.com/lepture/mistune/archive/v{{ version }}.tar.gz
-  sha256: c4f391e61d3b5e8fbb112669a5c6960fb04b71b61d35f0f09a201809545b1676
+  fn: "{{ name }}-{{ version }}.tar.gz"
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 21d0e869df3b9189f248e022f1c9763cf9069e1a2f00676f1f1852bd7f98b713
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
     - python
     - setuptools
-
   run:
     - python
 
 test:
+  source_files:
+    - tests
   requires:
-    - python
     - nose
+    - python
   imports:
     - mistune
   commands:
-    - cd "{{ SRC_DIR }}"
-    - python setup.py -q nosetests
+    - nosetests
 
 about:
   home: https://github.com/lepture/mistune
-  license:  BSD 3-clause
+  license_family: BSD
+  license_file: LICENSE
+  license: BSD-3-Clause
   summary: The fastest markdown parser in pure Python
+  dev_url: https://github.com/lepture/mistune
+  doc_url: https://mistune.readthedocs.io/
 
 extra:
   recipe-maintainers:
