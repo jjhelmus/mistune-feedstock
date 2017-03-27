@@ -1,17 +1,17 @@
 {% set name = "mistune" %}
-{% set version = "0.7.3" %}
+{% set version = "0.7.4" %}
 
 package:
-  name: "{{ name }}"
-  version: "{{ version }}"
+  name: {{ name }}
+  version: {{ version }}
 
 source:
-  fn: "{{ name }}-{{ version }}.tar.gz"
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 21d0e869df3b9189f248e022f1c9763cf9069e1a2f00676f1f1852bd7f98b713
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8517af9f5cd1857bb83f9a23da75aa516d7538c32a2c5d5c56f3789a9e4cd22f
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
@@ -34,10 +34,10 @@ test:
 
 about:
   home: https://github.com/lepture/mistune
-  license_family: BSD
   license_file: LICENSE
-  license: BSD-3-Clause
-  summary: The fastest markdown parser in pure Python
+  license: BSD 3-Clause
+  license_family: BSD
+  summary: 'The fastest markdown parser in pure Python.'
   dev_url: https://github.com/lepture/mistune
   doc_url: https://mistune.readthedocs.io/
 
@@ -45,3 +45,4 @@ extra:
   recipe-maintainers:
     - pelson
     - bollwyvl
+    - ocefpaf
