@@ -1,0 +1,25 @@
+From faf56cfb8227a2cfa72727de2959c09078085623 Mon Sep 17 00:00:00 2001
+From: Jonathan Helmus <jjhelmus@gmail.com>
+Date: Fri, 10 Nov 2017 09:50:05 -0600
+Subject: [PATCH] fix case insensitive refs unit test
+
+---
+ mistune.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mistune.py b/mistune.py
+index 958eb32..86e770c 100644
+--- a/mistune.py
++++ b/mistune.py
+@@ -48,7 +48,7 @@ def _pure_pattern(regex):
+ 
+ 
+ def _keyify(key):
+-    return _key_pattern.sub(' ', escape(key, quote=True))
++    return _key_pattern.sub(' ', escape(key, quote=True).lower())
+ 
+ 
+ def escape(text, quote=False, smart_amp=True):
+-- 
+2.7.4
+

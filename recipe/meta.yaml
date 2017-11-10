@@ -1,5 +1,5 @@
 {% set name = "mistune" %}
-{% set version = "0.7.4" %}
+{% set version = "0.8.1" %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,9 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8517af9f5cd1857bb83f9a23da75aa516d7538c32a2c5d5c56f3789a9e4cd22f
+  sha256: 4c0f66924ce28f03b95b210ea57e57bd0b59f479edd91c2fa4fe59331eae4a82
+  patches:
+    - 0001-fix-case-insensitive-refs-unit-test.patch
 
 build:
   number: 0
